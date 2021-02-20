@@ -31,7 +31,7 @@ class Onboard extends StatelessWidget {
                               tag: 'input_phon_auth_title',
                               flightShuttleBuilder: _flightShuttleBuilder,
                               child: Text(
-                                'You\'re moving what\nmatters.',
+                                'Welcome to CourierAsap',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 27,
@@ -46,7 +46,7 @@ class Onboard extends StatelessWidget {
                             child: Hero(
                               tag: 'body_text_splash',
                               child: Text(
-                                'We are building new ways to support you with smarter deliveries, flexibility\nand quick pay.',
+                                'Your No 1 plug for all deliveries within Portharcourt and environs.',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
