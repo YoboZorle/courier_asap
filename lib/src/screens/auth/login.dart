@@ -69,6 +69,34 @@ class _LoginState extends State<Login> {
         },
         child: new Scaffold(
             backgroundColor: Colors.white,
+            appBar: AppBar(
+              automaticallyImplyLeading: false,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              brightness: Brightness.light,
+              actions: [
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.only(left: 0.0),
+                    height: 40,
+                    width: 100,
+                    child: Text(
+                      'Go back',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Ubuntu',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
             body: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());
@@ -80,37 +108,13 @@ class _LoginState extends State<Login> {
                       child: Stack(children: <Widget>[
                         SafeArea(
                             child: ListView(children: <Widget>[
-                          Row(
-                            children: [
-                              GestureDetector(
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  padding: const EdgeInsets.only(left: 15.0),
-                                  height: 40,
-                                  width: 100,
-                                  child: Text(
-                                    'Cancel',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'Ubuntu',
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 110),
+                          SizedBox(height: 30),
                           Hero(
                             tag: 'input_phon_auth_title',
                             child: Container(
                               margin: EdgeInsets.only(left: 22),
                               child: Text(
-                                'Let\'s Get Started!',
+                                'Get Started!',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 24,
@@ -229,7 +233,7 @@ class _LoginState extends State<Login> {
       );
 
   _terms() => Container(
-        margin: EdgeInsets.only(left: 20, top: 5),
+        margin: EdgeInsets.only(left: 20, top: 10),
         child: Hero(
           tag: 'body_text_splash',
           child: new RichText(
@@ -237,7 +241,7 @@ class _LoginState extends State<Login> {
             text: new TextSpan(
               children: [
                 new TextSpan(
-                  text: 'By entering your details, you agree to\ Pickrr\'s ',
+                  text: 'By entering your details, you agree to\ CourierAsap\'s ',
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Ubuntu',
@@ -274,11 +278,11 @@ class _LoginState extends State<Login> {
               child: FlatButton(
                 splashColor: Colors.grey[200],
                 shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(25.0),
+                  borderRadius: new BorderRadius.circular(8.0),
                 ),
                 onPressed: () => _processLogin(),
-                color: AppColor.primaryText,
-                child: Text("Login",
+                color: AppColor.primaryPepper,
+                child: Text("Continue",
                     style: TextStyle(
                         fontFamily: 'Ubuntu',
                         fontWeight: FontWeight.w600,

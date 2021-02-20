@@ -77,7 +77,7 @@ class Onboard extends StatelessWidget {
                                   end: Alignment.centerRight,
                                 ),
                                 borderRadius: const BorderRadius.all(
-                                  Radius.circular(35.0),
+                                  Radius.circular(8.0),
                                 ),
                               ),
                               child: Center(
