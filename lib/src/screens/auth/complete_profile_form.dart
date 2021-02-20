@@ -87,8 +87,9 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               brightness: Brightness.light,
               backgroundColor: Colors.white,
               elevation: 0,
+              centerTitle: true,
               title: Text(
-                'Set Up Your Profile',
+                'Enter Profile Details',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
@@ -211,11 +212,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                       child: FlatButton(
                         splashColor: Colors.white,
                         shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
+                          borderRadius: new BorderRadius.circular(8.0),
                         ),
                         onPressed: () => updateProfileDetailsHandler(),
-                        color: AppColor.primaryText,
-                        child: Text("Continue",
+                        color: AppColor.primaryPepper,
+                        child: Text("Submit",
                             style: TextStyle(
                                 fontFamily: 'Ubuntu',
                                 fontWeight: FontWeight.w600,
