@@ -19,7 +19,8 @@ class AppColor {
   static final Color primaryBackground = Color.fromARGB(255, 255, 255, 255);
   static final Color secondaryBackground = Color.fromARGB(255, 0, 141, 210);
   static final Color primaryElement = Color.fromARGB(255, 255, 255, 255);
-  static final Color primaryText = Color.fromARGB(255, 0, 141, 210);
+  static final Color primaryText = Color(0xFF754E26);
+  static final Color primaryPepper =     Color(0xFFC44942);
   static final grey = Color(0xFF959595);
 }
 

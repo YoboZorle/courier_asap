@@ -5,11 +5,11 @@ class Assets {
   static const String flarePickrr = 'assets/flare/pickrr.flr';
   static const String flareRider = 'assets/flare/rider.flr';
   static const String flareSplashKargoBg = 'assets/flare/splash_kargo_bg.flr';
-  static const String fontsUbuntu-Bold = 'assets/fonts/Ubuntu-Bold.ttf';
-  static const String fontsUbuntu-Light = 'assets/fonts/Ubuntu-Light.ttf';
-  static const String fontsUbuntu-Medium = 'assets/fonts/Ubuntu-Medium.ttf';
-  static const String fontsUbuntu-Regular = 'assets/fonts/Ubuntu-Regular.ttf';
-  static const String imagesCourierr = 'assets/images/courierr.jpg';
+  static const String fontsUbuntuBold = 'assets/fonts/Ubuntu-Bold.ttf';
+  static const String fontsUbuntuLight = 'assets/fonts/Ubuntu-Light.ttf';
+  static const String fontsUbuntuMedium = 'assets/fonts/Ubuntu-Medium.ttf';
+  static const String fontsUbuntuRegular = 'assets/fonts/Ubuntu-Regular.ttf';
+  static const String imagesCourierOnboard = 'assets/images/courier_onboard.png';
   static const String imagesDestinationMapMarker = 'assets/images/destination_map_marker.png';
   static const String imagesDrivingPin = 'assets/images/driving_pin.png';
   static const String imagesFriend1 = 'assets/images/friend1.jpg';
