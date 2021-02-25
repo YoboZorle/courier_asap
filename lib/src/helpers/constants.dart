@@ -19,7 +19,7 @@ class AppColor {
   static final Color secondaryBackground = Color.fromARGB(255, 0, 141, 210);
   static final Color primaryElement = Color.fromARGB(255, 255, 255, 255);
   static final Color primaryText = Color(0xFF754E26);
-  static final Color primaryPepper = Color(0xFFC44942);
+  static final Color primaryPepper =     Color(0xFFC44942);
   static final grey = Color(0xFF959595);
 }
 
@@ -36,10 +36,10 @@ class Radii {
       bottomRight: Radius.circular(25));
 
   static final BorderRadiusGeometry k25pxAll = BorderRadius.only(
-      topRight: Radius.circular(25),
-      topLeft: Radius.circular(25),
-      bottomLeft: Radius.circular(25),
-      bottomRight: Radius.circular(25));
+      topRight: Radius.circular(8),
+      topLeft: Radius.circular(8),
+      bottomLeft: Radius.circular(8),
+      bottomRight: Radius.circular(8));
 
   static final BorderRadiusGeometry kRoundpxRadius = BorderRadius.only(
       topRight: Radius.circular(25),
@@ -100,6 +100,5 @@ class AppData {
   static final String messageFrom = 'Yarner';
   static final String mapAPIKey = 'AIzaSyBQfjEMVXYdk2hK-aEMTseqQ9e9tVFRI_8';
   static final String placeholderImageUrl = '';
-  static final String paystackPublicKey =
-      'pk_test_86e8c322ffb87ea63619ef63272f40237f0175a2';
+  static final String paystackPublicKey = 'pk_test_86e8c322ffb87ea63619ef63272f40237f0175a2';
 }

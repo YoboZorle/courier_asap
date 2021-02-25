@@ -730,10 +730,12 @@ class _HomeState extends State<Home> {
   }
 
   _accountBlockedAlert() {
-    if (widget.arguments != null && widget.arguments.showAccountBlockedSnackBar) {
+    if (widget.arguments != null &&
+        widget.arguments.showAccountBlockedSnackBar) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text('Your account has been blocked. Contact admin for help'),
+          content:
+              Text('Your account has been blocked. Contact admin for help'),
         ));
       });
     }
@@ -811,7 +813,7 @@ class _PickrrAppBarState extends State<PickrrAppBar> {
                   );
                 },
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0))),
                 label: Container(
                   margin: EdgeInsets.only(right: 5, top: 10, bottom: 10),
                   child: user.isDriver
