@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pickrr_app/src/helpers/constants.dart';
 import 'package:pickrr_app/src/utils/show_up_animation.dart';
-
+// 08075678901
 class Onboard extends StatelessWidget {
   final int delayAmount = 600;
 

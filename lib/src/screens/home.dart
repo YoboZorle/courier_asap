@@ -916,80 +916,82 @@ class _PickrrAppBarState extends State<PickrrAppBar> {
           onTap: () {
             Scaffold.of(context).openDrawer();
           }),
-      // actions: [
-      //   Row(
-      //     children: [
-      //       BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      //           builder: (_, state) {
-      //             if (state is NonLoggedIn) {
-      //               WidgetsBinding.instance.addPostFrameCallback(
-      //                       (_) => Navigator.pushReplacementNamed(context, '/'));
-      //             }
-      //             if (state.props.isEmpty) {
-      //               return Container();
-      //             }
-      //             User user = state.props[0];
-      //             return RaisedButton.icon(
-      //               onPressed: () {
-      //                 if (user.isDriver) {
-      //                   Navigator.pushNamed(
-      //                     context,
-      //                     '/DriversHomePage',
-      //                   );
-      //                   return;
-      //                 }
-      //                 if (user.isBusiness) {
-      //                   Navigator.pushNamed(
-      //                     context,
-      //                     '/BusinessHomePage',
-      //                   );
-      //                   return;
-      //                 }
-      //                 Navigator.pushNamed(
-      //                   context,
-      //                   '/DriverOnboard',
-      //                 );
-      //               },
-      //               shape: RoundedRectangleBorder(
-      //                   borderRadius: BorderRadius.all(Radius.circular(8.0))),
-      //               label: Container(
-      //                 margin: EdgeInsets.only(right: 5, top: 10, bottom: 10),
-      //                 child: user.isDriver
-      //                     ? Text('Open as rider',
-      //                     style: TextStyle(
-      //                         fontSize: 13.6,
-      //                         fontFamily: 'Ubuntu',
-      //                         color: Colors.white,
-      //                         fontWeight: FontWeight.w400))
-      //                     : user.isBusiness
-      //                     ? Text('Open as business',
-      //                     style: TextStyle(
-      //                         fontSize: 13.6,
-      //                         fontFamily: 'Ubuntu',
-      //                         color: Colors.white,
-      //                         fontWeight: FontWeight.w400))
-      //                     : Text('Become a rider',
-      //                     style: TextStyle(
-      //                         fontSize: 13.6,
-      //                         fontFamily: 'Ubuntu',
-      //                         color: Colors.white,
-      //                         fontWeight: FontWeight.w400)),
-      //               ),
-      //               icon: Container(
-      //                 margin: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-      //                 child: SvgPicture.asset('assets/svg/kargo_bike.svg',
-      //                     height: 20, semanticsLabel: 'Bike Icon'),
-      //               ),
-      //               textColor: Colors.white,
-      //               splashColor: Colors.yellowAccent,
-      //               color: AppColor.primaryText,
-      //               elevation: 5,
-      //             );
-      //           }),
-      //       SizedBox(width: 15)
-      //     ],
-      //   ),
-      // ],
+
+
+      actions: [
+        Row(
+          children: [
+            BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                builder: (_, state) {
+              if (state is NonLoggedIn) {
+                WidgetsBinding.instance.addPostFrameCallback(
+                    (_) => Navigator.pushReplacementNamed(context, '/'));
+              }
+              if (state.props.isEmpty) {
+                return Container();
+              }
+              User user = state.props[0];
+              return RaisedButton.icon(
+                onPressed: () {
+                  if (user.isDriver) {
+                    Navigator.pushNamed(
+                      context,
+                      '/DriversHomePage',
+                    );
+                    return;
+                  }
+                  if (user.isBusiness) {
+                    Navigator.pushNamed(
+                      context,
+                      '/BusinessHomePage',
+                    );
+                    return;
+                  }
+                  Navigator.pushNamed(
+                    context,
+                    '/DriverOnboard',
+                  );
+                },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                label: Container(
+                  margin: EdgeInsets.only(right: 5, top: 10, bottom: 10),
+                  child: user.isDriver
+                      ? Text('Open as rider',
+                          style: TextStyle(
+                              fontSize: 13.6,
+                              fontFamily: 'Ubuntu',
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400))
+                      : user.isBusiness
+                          ? Text('Open as business',
+                              style: TextStyle(
+                                  fontSize: 13.6,
+                                  fontFamily: 'Ubuntu',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400))
+                          : Text('Become a rider',
+                              style: TextStyle(
+                                  fontSize: 13.6,
+                                  fontFamily: 'Ubuntu',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400)),
+                ),
+                icon: Container(
+                  margin: EdgeInsets.only(left: 5, top: 10, bottom: 10),
+                  child: SvgPicture.asset('assets/svg/kargo_bike.svg',
+                      height: 20, semanticsLabel: 'Bike Icon'),
+                ),
+                textColor: Colors.white,
+                splashColor: Colors.yellowAccent,
+                color: AppColor.primaryText,
+                elevation: 5,
+              );
+            }),
+            SizedBox(width: 15)
+          ],
+        ),
+      ],
     );
   }
 }

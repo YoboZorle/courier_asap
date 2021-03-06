@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+
   static const String flareRider = 'assets/flare/rider.flr';
   static const String flareSplashKargoBg = 'assets/flare/splash_kargo_bg.flr';
   static const String fontsUbuntuBold = 'assets/fonts/Ubuntu-Bold.ttf';
@@ -10,7 +11,7 @@ class Assets {
   static const String fontsUbuntuRegular = 'assets/fonts/Ubuntu-Regular.ttf';
   static const String imagesCourierOnboard = 'assets/images/courier_onboard.png';
   static const String imagesDestinationMapMarker = 'assets/images/destination_map_marker.png';
-  static const String imagesDriverOnboard = 'assets/images/driver_onboard.png';
+
   static const String imagesDrivingPin = 'assets/images/driving_pin.png';
   static const String imagesFriend1 = 'assets/images/friend1.jpg';
   static const String imagesFriend2 = 'assets/images/friend2.jpg';
