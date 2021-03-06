@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "504755289184",
-    "project_id": "pickrr-f5f39",
-    "storage_bucket": "pickrr-f5f39.appspot.com"
+    "project_number": "641536736154",
+    "project_id": "courierasap-dda34",
+    "storage_bucket": "courierasap-dda34.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:504755289184:android:6be1894bcad8b20e491705",
+        "mobilesdk_app_id": "1:641536736154:android:2746349746d805de3b9823",
         "android_client_info": {
-          "package_name": "io.klynox.pickrr_app"
+          "package_name": "io.klynox.courier_asap"
         }
       },
       "oauth_client": [
         {
-          "client_id": "504755289184-jhot0np6npo9hrukjfhvlivks3flcguu.apps.googleusercontent.com",
+          "client_id": "641536736154-fhuav4j97ls33vo7m7b3qrno1g4v73n1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAePkXZul5uH5mM1niSVlkbMO93NcD1V68"
+          "current_key": "AIzaSyBxwz73FIEbwMHOWpJ3mG0Rn4P3yvEZW5Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "504755289184-jhot0np6npo9hrukjfhvlivks3flcguu.apps.googleusercontent.com",
+              "client_id": "641536736154-fhuav4j97ls33vo7m7b3qrno1g4v73n1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

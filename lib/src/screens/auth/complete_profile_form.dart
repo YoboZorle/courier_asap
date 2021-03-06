@@ -87,8 +87,9 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               brightness: Brightness.light,
               backgroundColor: Colors.white,
               elevation: 0,
+              centerTitle: true,
               title: Text(
-                'Set Up Your Profile',
+                'Enter Profile Details',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
@@ -110,32 +111,48 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                           child: ListView(
                               physics: const BouncingScrollPhysics(),
                               children: <Widget>[
-                            SizedBox(height: 25),
-                            GestureDetector(
-                              onTap: () async {
-                                final pickedFile = await ImagePicker().getImage(
-                                    imageQuality: 10,
-                                    maxHeight: 500,
-                                    maxWidth: 500,
-                                    source: ImageSource.gallery);
-                                if (pickedFile != null) {
-                                  setState(() {
-                                    _profileImage = PickedFile(pickedFile.path);
-                                  });
-                                }
-                              },
-                              child: Column(
-                                children: [
-                                  !kIsWeb &&
+                                SizedBox(height: 25),
+                                GestureDetector(
+                                  onTap: () async {
+                                    final pickedFile = await ImagePicker().getImage(
+                                        imageQuality: 10,
+                                        maxHeight: 500,
+                                        maxWidth: 500,
+                                        source: ImageSource.gallery);
+                                    if (pickedFile != null) {
+                                      setState(() {
+                                        _profileImage = PickedFile(pickedFile.path);
+                                      });
+                                    }
+                                  },
+                                  child: Column(
+                                    children: [
+                                      !kIsWeb &&
                                           defaultTargetPlatform ==
                                               TargetPlatform.android
-                                      ? FutureBuilder<void>(
-                                          future: retrieveLostData(),
-                                          builder: (BuildContext context,
-                                              AsyncSnapshot<void> snapshot) {
-                                            switch (snapshot.connectionState) {
-                                              case ConnectionState.none:
-                                              case ConnectionState.waiting:
+                                          ? FutureBuilder<void>(
+                                        future: retrieveLostData(),
+                                        builder: (BuildContext context,
+                                            AsyncSnapshot<void> snapshot) {
+                                          switch (snapshot.connectionState) {
+                                            case ConnectionState.none:
+                                            case ConnectionState.waiting:
+                                              return ClipOval(
+                                                  child: Image.asset(
+                                                    'assets/images/placeholder.jpg',
+                                                    fit: BoxFit.cover,
+                                                    width: 90.0,
+                                                    height: 90.0,
+                                                  ));
+                                            case ConnectionState.done:
+                                              return _previewImage();
+                                            default:
+                                              if (snapshot.hasError) {
+                                                return Text(
+                                                  'Pick image/video error: ${snapshot.error}}',
+                                                  textAlign: TextAlign.center,
+                                                );
+                                              } else {
                                                 return ClipOval(
                                                     child: Image.asset(
                                                       'assets/images/placeholder.jpg',
@@ -143,62 +160,46 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                                                       width: 90.0,
                                                       height: 90.0,
                                                     ));
-                                              case ConnectionState.done:
-                                                return _previewImage();
-                                              default:
-                                                if (snapshot.hasError) {
-                                                  return Text(
-                                                    'Pick image/video error: ${snapshot.error}}',
-                                                    textAlign: TextAlign.center,
-                                                  );
-                                                } else {
-                                                  return ClipOval(
-                                                      child: Image.asset(
-                                                        'assets/images/placeholder.jpg',
-                                                        fit: BoxFit.cover,
-                                                        width: 90.0,
-                                                        height: 90.0,
-                                                      ));
-                                                }
-                                            }
-                                          },
-                                        )
-                                      : (_previewImage()),
-                                  SizedBox(height: 16),
-                                  Text('Upload photo',
+                                              }
+                                          }
+                                        },
+                                      )
+                                          : (_previewImage()),
+                                      SizedBox(height: 16),
+                                      Text('Upload photo',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: 'Ubuntu',
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.w400,
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 25),
+                                Container(
+                                    height: 47,
+                                    margin: EdgeInsets.only(
+                                        left: 20, right: 20, bottom: 20),
+                                    color: Colors.grey[200],
+                                    child: _fullNameInput()),
+                                Container(
+                                    alignment: Alignment.center,
+                                    height: 47,
+                                    margin: EdgeInsets.only(
+                                        left: 20, right: 20, bottom: 10),
+                                    color: Colors.grey[200],
+                                    child: _emailInput()),
+                                Container(
+                                  margin: EdgeInsets.only(left: 20),
+                                  child: Text('We\'ll send you your ride receipts.',
                                       style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'Ubuntu',
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                                ],
-                              ),
-                            ),
-                         SizedBox(height: 25),
-                            Container(
-                                height: 47,
-                                margin: EdgeInsets.only(
-                                    left: 20, right: 20, bottom: 20),
-                                color: Colors.grey[200],
-                                child: _fullNameInput()),
-                            Container(
-                                alignment: Alignment.center,
-                                height: 47,
-                                margin: EdgeInsets.only(
-                                    left: 20, right: 20, bottom: 10),
-                                color: Colors.grey[200],
-                                child: _emailInput()),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              child: Text('We\'ll send you your ride receipts.',
-                                  style: TextStyle(
-                                      fontFamily: 'Ubuntu',
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey,
-                                      fontSize: 13)),
-                            ),
-                          ])),
+                                          fontFamily: 'Ubuntu',
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.grey,
+                                          fontSize: 13)),
+                                ),
+                              ])),
                     ])),
               ),
               Container(
@@ -211,11 +212,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                       child: FlatButton(
                         splashColor: Colors.white,
                         shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
+                          borderRadius: new BorderRadius.circular(8.0),
                         ),
                         onPressed: () => updateProfileDetailsHandler(),
-                        color: AppColor.primaryText,
-                        child: Text("Continue",
+                        color: AppColor.primaryPepper,
+                        child: Text("Submit",
                             style: TextStyle(
                                 fontFamily: 'Ubuntu',
                                 fontWeight: FontWeight.w600,
@@ -241,115 +242,115 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   }
 
   _fullNameInput() => Container(
-        margin: EdgeInsets.only(left: 15),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(left: 0),
-                child: TextFormField(
-                  keyboardType: TextInputType.name,
-                  cursorColor: AppColor.primaryText,
-                  controller: _fnameController,
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: 'Ubuntu',
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
-                  decoration: InputDecoration(
-                    hintText: 'Enter full name',
-                    hintStyle: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: 'Ubuntu',
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    suffixIcon: _fnameController.text.isNotEmpty
-                        ? Padding(
-                            padding:
-                                const EdgeInsetsDirectional.only(start: 12.0),
-                            child: IconButton(
-                              iconSize: 16.0,
-                              icon: Icon(
-                                Icons.cancel,
-                                color: Colors.grey,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _fnameController.clear();
-                                });
-                              },
-                            ),
-                          )
-                        : null,
+    margin: EdgeInsets.only(left: 15),
+    child: Row(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 0),
+            child: TextFormField(
+              keyboardType: TextInputType.name,
+              cursorColor: AppColor.primaryText,
+              controller: _fnameController,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'Ubuntu',
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400),
+              decoration: InputDecoration(
+                hintText: 'Enter full name',
+                hintStyle: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: 'Ubuntu',
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                suffixIcon: _fnameController.text.isNotEmpty
+                    ? Padding(
+                  padding:
+                  const EdgeInsetsDirectional.only(start: 12.0),
+                  child: IconButton(
+                    iconSize: 16.0,
+                    icon: Icon(
+                      Icons.cancel,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _fnameController.clear();
+                      });
+                    },
                   ),
-                ),
+                )
+                    : null,
               ),
             ),
-          ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 
   _emailInput() => Container(
-        margin: EdgeInsets.only(left: 15),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(left: 0),
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: AppColor.primaryText,
-                  controller: _emailController,
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: 'Ubuntu',
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
-                  decoration: InputDecoration(
-                    hintText: 'Input email',
-                    hintStyle: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: 'Ubuntu',
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    suffixIcon: _emailController.text != null &&
-                            _emailController.text.isNotEmpty
-                        ? Padding(
-                            padding:
-                                const EdgeInsetsDirectional.only(start: 12.0),
-                            child: IconButton(
-                              iconSize: 16.0,
-                              icon: Icon(
-                                Icons.cancel,
-                                color: Colors.grey,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _emailController.clear();
-                                });
-                              },
-                            ),
-                          )
-                        : null,
+    margin: EdgeInsets.only(left: 15),
+    child: Row(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 0),
+            child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              cursorColor: AppColor.primaryText,
+              controller: _emailController,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'Ubuntu',
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400),
+              decoration: InputDecoration(
+                hintText: 'Input email',
+                hintStyle: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: 'Ubuntu',
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                suffixIcon: _emailController.text != null &&
+                    _emailController.text.isNotEmpty
+                    ? Padding(
+                  padding:
+                  const EdgeInsetsDirectional.only(start: 12.0),
+                  child: IconButton(
+                    iconSize: 16.0,
+                    icon: Icon(
+                      Icons.cancel,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _emailController.clear();
+                      });
+                    },
                   ),
-                ),
+                )
+                    : null,
               ),
             ),
-          ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 
   Future<void> retrieveLostData() async {
     final LostData response = await _picker.getLostData();
@@ -390,11 +391,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     } else {
       return ClipOval(
           child: Image.asset(
-        'assets/images/placeholder.jpg',
-        fit: BoxFit.cover,
-        width: 90.0,
-        height: 90.0,
-      ));
+            'assets/images/placeholder.jpg',
+            fit: BoxFit.cover,
+            width: 90.0,
+            height: 90.0,
+          ));
     }
   }
 

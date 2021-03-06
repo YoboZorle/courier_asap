@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.klynox.pickrr_app">
+    package="io.klynox.courier_asap">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application android:name=".Application" android:usesCleartextTraffic="true"
-        android:label="Pickrr"
+        android:label="CourierAsap"
         android:icon="@mipmap/ic_launcher" android:allowBackup="false" android:fullBackupContent="false">
 
        <meta-data android:name="com.google.android.geo.API_KEY"

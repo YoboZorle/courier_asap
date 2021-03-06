@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
   TextEditingController destinationController;
   TextEditingController pickupController;
   List<Marker> markersList = [];
-  LatLng _center = LatLng(4.778559, 7.016669);
+  LatLng _center = LatLng(4.816280, 7.000530);
   GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: AppData.mapAPIKey);
   GoogleMapPolyline googleMapPolyline;
   final List<Polyline> polyline = [];
@@ -319,6 +319,9 @@ class _HomeState extends State<Home> {
                       boxShadow: [
                         Shadows.primaryShadow,
                       ],
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(0.0),
+                          topLeft: Radius.circular(0.0)),
                     ),
                     width: MediaQuery.of(context).size.width,
                     child: SafeArea(
@@ -328,164 +331,299 @@ class _HomeState extends State<Home> {
                           Container(
                             height: 8,
                             width: 60,
-                            margin: EdgeInsets.only(top: 14, bottom: 13),
+                            margin: EdgeInsets.only(top: 15),
                             decoration: BoxDecoration(
-                                color: Colors.grey[300],
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(16)),
                           ),
                           _placeDistance != null
                               ? _deliveryDetails()
                               : _bottomTitle(),
-                          Container(
-                              height: 50.0,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(
-                                  left: 20, right: 20, bottom: 6, top: 13),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.fromBorderSide(
-                                    Borders.globalSearchBorder),
-                                boxShadow: [
-                                  Shadows.globalShadowSearch,
-                                ],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  TextField(
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                      hintText: "Enter Pickup Location",
-                                      hintStyle: TextStyle(
-                                        color: Colors.black45,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 17,
+                          // Container(
+                          //     height: 50.0,
+                          //     width: double.infinity,
+                          //     margin: EdgeInsets.only(
+                          //         left: 20, right: 20, bottom: 6, top: 13),
+                          //     decoration: BoxDecoration(
+                          //       color: Colors.white,
+                          //       border: Border.fromBorderSide(
+                          //           Borders.globalSearchBorder),
+                          //       boxShadow: [
+                          //         Shadows.globalShadowSearch,
+                          //       ],
+                          //       borderRadius:
+                          //           BorderRadius.all(Radius.circular(5)),
+                          //     ),
+                          //     child: Column(
+                          //       children: <Widget>[
+                          //         TextField(
+                          //           readOnly: true,
+                          //           decoration: InputDecoration(
+                          //             hintText: "Pickup location",
+                          //             hintStyle: TextStyle(
+                          //               color: Colors.black45,
+                          //               fontFamily: "Ubuntu",
+                          //               fontWeight: FontWeight.w400,
+                          //               fontSize: 17,
+                          //             ),
+                          //             labelStyle: TextStyle(
+                          //               color: Colors.black,
+                          //               fontFamily: "Ubuntu",
+                          //               fontWeight: FontWeight.w500,
+                          //               fontSize: 17,
+                          //             ),
+                          //             border: InputBorder.none,
+                          //             prefixIcon: Column(
+                          //               mainAxisAlignment:
+                          //                   MainAxisAlignment.center,
+                          //               children: [
+                          //                 Padding(
+                          //                   padding: const EdgeInsets.only(
+                          //                       left: 8.0, right: 5),
+                          //                   child: SvgPicture.asset(
+                          //                       'assets/svg/pin.svg',
+                          //                       height: 19,
+                          //                       color: AppColor.primaryText,
+                          //                       semanticsLabel: 'search icon'),
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //             contentPadding: EdgeInsets.only(
+                          //                 left: 15.0, top: 15.0),
+                          //           ),
+                          //           controller: pickupController,
+                          //           onTap: () async {
+                          //             setState(() {
+                          //               _clearPickupRecord();
+                          //             });
+                          //             Prediction p =
+                          //                 await PlacesAutocomplete.show(
+                          //                     context: context,
+                          //                     apiKey: AppData.mapAPIKey,
+                          //                     mode: Mode.fullscreen,
+                          //                     logo: Icon(Icons.search,
+                          //                         color: Colors.transparent),
+                          //                     language: "en",
+                          //                     hint: 'Search pickup location',
+                          //                     components: [
+                          //                   new Component(
+                          //                       Component.country, "ng"),
+                          //                 ]);
+                          //             displayPredictionPickup(p);
+                          //           },
+                          //         ),
+                          //       ],
+                          //     )),
+                          // Container(
+                          //     height: 50.0,
+                          //     width: double.infinity,
+                          //     margin: EdgeInsets.only(
+                          //         left: 20, right: 20, bottom: 18, top: 6),
+                          //     decoration: BoxDecoration(
+                          //       color: Colors.white,
+                          //       border: Border.fromBorderSide(
+                          //           Borders.globalSearchBorder),
+                          //       boxShadow: [
+                          //         Shadows.globalShadowSearch,
+                          //       ],
+                          //       borderRadius:
+                          //           BorderRadius.all(Radius.circular(5)),
+                          //     ),
+                          //     child: Column(
+                          //       children: <Widget>[
+                          //         TextField(
+                          //           readOnly: true,
+                          //           decoration: InputDecoration(
+                          //             hintText: "Dropoff location",
+                          //             hintStyle: TextStyle(
+                          //               color: Colors.black45,
+                          //               fontFamily: "Ubuntu",
+                          //               fontWeight: FontWeight.w400,
+                          //               fontSize: 17,
+                          //             ),
+                          //             labelStyle: TextStyle(
+                          //               color: Colors.black,
+                          //               fontFamily: "Ubuntu",
+                          //               fontWeight: FontWeight.w500,
+                          //               fontSize: 17,
+                          //             ),
+                          //             border: InputBorder.none,
+                          //             prefixIcon: Column(
+                          //               mainAxisAlignment:
+                          //                   MainAxisAlignment.center,
+                          //               children: [
+                          //                 Padding(
+                          //                   padding: const EdgeInsets.only(
+                          //                       left: 8.0, right: 5),
+                          //                   child: SvgPicture.asset(
+                          //                       'assets/svg/nav.svg',
+                          //                       height: 19,
+                          //                       color: AppColor.primaryText,
+                          //                       semanticsLabel: 'search icon'),
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //             contentPadding: EdgeInsets.only(
+                          //                 left: 15.0, top: 15.0),
+                          //           ),
+                          //           controller: destinationController,
+                          //           onTap: () async {
+                          //             setState(() {
+                          //               _clearDestinationRecord();
+                          //             });
+                          //             Prediction p =
+                          //                 await PlacesAutocomplete.show(
+                          //                     context: context,
+                          //                     apiKey: AppData.mapAPIKey,
+                          //                     mode: Mode.fullscreen,
+                          //                     language: "en",
+                          //                     logo: Icon(Icons.search,
+                          //                         color: Colors.transparent),
+                          //                     hint: 'Search destination',
+                          //                     components: [
+                          //                   new Component(
+                          //                       Component.country, "ng")
+                          //                 ]);
+                          //             displayPredictionDestination(p);
+                          //           },
+                          //         ),
+                          //       ],
+                          //     )),
+                          ListTile(
+                            dense: true,
+                            leading: Icon(
+                              Icons.circle,
+                              color: Colors.red,
+                              size: 11,
+                            ),
+                            subtitle: Container(
+                                height: 50.0,
+                                width: double.infinity,
+                                // margin: EdgeInsets.only(
+                                //     left: 20, right: 20, bottom: 6, top: 13),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.fromBorderSide(
+                                      Borders.globalSearchBorder),
+                                  boxShadow: [
+                                    Shadows.globalShadowSearch,
+                                  ],
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    TextField(
+                                      readOnly: true,
+                                      decoration: InputDecoration(
+                                        hintText: "Pickup location",
+                                        hintStyle: TextStyle(
+                                          color: Colors.black45,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16,
+                                        ),
+                                        labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Ubuntu",
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 17,
+                                        ),
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                            left: 15),
                                       ),
-                                      labelStyle: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 17,
-                                      ),
-                                      border: InputBorder.none,
-                                      prefixIcon: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0, right: 5),
-                                            child: SvgPicture.asset(
-                                                'assets/svg/pin.svg',
-                                                height: 19,
-                                                color: AppColor.primaryText,
-                                                semanticsLabel: 'search icon'),
-                                          ),
-                                        ],
-                                      ),
-                                      contentPadding: EdgeInsets.only(
-                                          left: 15.0, top: 15.0),
+                                      controller: pickupController,
+                                      onTap: () async {
+                                        setState(() {
+                                          _clearPickupRecord();
+                                        });
+                                        Prediction p =
+                                        await PlacesAutocomplete.show(
+                                            context: context,
+                                            apiKey: AppData.mapAPIKey,
+                                            mode: Mode.fullscreen,
+                                            logo: Icon(Icons.search,
+                                                color: Colors.transparent),
+                                            language: "en",
+                                            hint: 'Search pickup location',
+                                            components: [
+                                              new Component(
+                                                  Component.country, "ng"),
+                                            ]);
+                                        displayPredictionPickup(p);
+                                      },
                                     ),
-                                    controller: pickupController,
-                                    onTap: () async {
-                                      setState(() {
-                                        _clearPickupRecord();
-                                      });
-                                      Prediction p =
-                                          await PlacesAutocomplete.show(
-                                              context: context,
-                                              apiKey: AppData.mapAPIKey,
-                                              mode: Mode.fullscreen,
-                                              logo: Icon(Icons.search,
-                                                  color: Colors.transparent),
-                                              language: "en",
-                                              hint: 'Search pickup location',
-                                              components: [
-                                            new Component(
-                                                Component.country, "ng"),
-                                          ]);
-                                      displayPredictionPickup(p);
-                                    },
-                                  ),
-                                ],
-                              )),
-                          Container(
-                              height: 50.0,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(
-                                  left: 20, right: 20, bottom: 18, top: 6),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.fromBorderSide(
-                                    Borders.globalSearchBorder),
-                                boxShadow: [
-                                  Shadows.globalShadowSearch,
-                                ],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  TextField(
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                      hintText: "Enter Destination Location",
-                                      hintStyle: TextStyle(
-                                        color: Colors.black45,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 17,
+                                  ],
+                                )),
+                          ),
+                          SizedBox(height: 6),
+                          ListTile(
+                            dense: true,
+                            leading: Icon(
+                              Icons.circle,
+                              color: Colors.green,
+                              size: 11,
+                            ),
+                            subtitle: Container(
+                                height: 50.0,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.fromBorderSide(
+                                      Borders.globalSearchBorder),
+                                  boxShadow: [
+                                    Shadows.globalShadowSearch,
+                                  ],
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    TextField(
+                                      readOnly: true,
+                                      decoration: InputDecoration(
+                                        hintText: "Dropoff location",
+                                        hintStyle: TextStyle(
+                                          color: Colors.black45,
+
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16,
+                                        ),
+                                        labelStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Ubuntu",
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 17,
+                                        ),
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                            left: 15),
                                       ),
-                                      labelStyle: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 17,
-                                      ),
-                                      border: InputBorder.none,
-                                      prefixIcon: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0, right: 5),
-                                            child: SvgPicture.asset(
-                                                'assets/svg/nav.svg',
-                                                height: 19,
-                                                color: AppColor.primaryText,
-                                                semanticsLabel: 'search icon'),
-                                          ),
-                                        ],
-                                      ),
-                                      contentPadding: EdgeInsets.only(
-                                          left: 15.0, top: 15.0),
+                                      controller: destinationController,
+                                      onTap: () async {
+                                        setState(() {
+                                          _clearDestinationRecord();
+                                        });
+                                        Prediction p =
+                                            await PlacesAutocomplete.show(
+                                                context: context,
+                                                apiKey: AppData.mapAPIKey,
+                                                mode: Mode.fullscreen,
+                                                language: "en",
+                                                logo: Icon(Icons.search,
+                                                    color: Colors.transparent),
+                                                hint: 'Search destination',
+                                                components: [
+                                              new Component(
+                                                  Component.country, "ng")
+                                            ]);
+                                        displayPredictionDestination(p);
+                                      },
                                     ),
-                                    controller: destinationController,
-                                    onTap: () async {
-                                      setState(() {
-                                        _clearDestinationRecord();
-                                      });
-                                      Prediction p =
-                                          await PlacesAutocomplete.show(
-                                              context: context,
-                                              apiKey: AppData.mapAPIKey,
-                                              mode: Mode.fullscreen,
-                                              language: "en",
-                                              logo: Icon(Icons.search,
-                                                  color: Colors.transparent),
-                                              hint: 'Search destination',
-                                              components: [
-                                            new Component(
-                                                Component.country, "ng")
-                                          ]);
-                                      displayPredictionDestination(p);
-                                    },
-                                  ),
-                                ],
-                              )),
+                                  ],
+                                )),
+                          ),
+                          SizedBox(height: 15),
                           InkWell(
                             child: Container(
                                 height: 47,
@@ -494,14 +632,14 @@ class _HomeState extends State<Home> {
                                     left: 20, right: 20, bottom: 8),
                                 decoration: BoxDecoration(
                                   color: _placeDistance != null
-                                      ? AppColor.primaryText
+                                      ? AppColor.primaryPepper
                                       : Colors.grey.withOpacity(0.5),
                                   borderRadius: Radii.k25pxAll,
                                 ),
                                 child: Text(
                                     _placeDistance != null
-                                        ? 'Request rider'
-                                        : 'Get estimate',
+                                        ? 'Order ride'
+                                        : 'Calculate price',
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: 'Ubuntu',
@@ -581,12 +719,12 @@ class _HomeState extends State<Home> {
 
   _deliveryDetails() => Container(
         width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.only(left: 10, right: 20, bottom: 5, top: 5),
+        margin: EdgeInsets.only(left: 15, right: 20, bottom: 5, top: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SvgPicture.asset('assets/svg/scooter.svg',
-                height: 55, semanticsLabel: 'search icon'),
+                height: 50, semanticsLabel: 'search icon'),
             SizedBox(width: 8),
             Expanded(
               child: Column(
@@ -595,7 +733,7 @@ class _HomeState extends State<Home> {
                   Text(
                     'Estimated time:',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 13,
                       fontFamily: "Ubuntu",
                       color: Colors.black54,
                       fontWeight: FontWeight.w400,
@@ -603,7 +741,7 @@ class _HomeState extends State<Home> {
                   ),
                   Text('$_placeTime' ' / ' '$_placeDistance' 'km',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontFamily: "Ubuntu",
                         color: Colors.black,
                         fontWeight: FontWeight.w800,
@@ -621,7 +759,7 @@ class _HomeState extends State<Home> {
                     Text(
                       'Fare estimate:',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                         fontFamily: "Ubuntu",
                         color: Colors.black54,
                         fontWeight: FontWeight.w400,
@@ -631,7 +769,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                           fontSize: 22,
                           fontFamily: "Roboto",
-                          color: AppColor.primaryText,
+                          color: AppColor.primaryPepper,
                           fontWeight: FontWeight.w800,
                         )),
                   ],
@@ -646,7 +784,7 @@ class _HomeState extends State<Home> {
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: 20),
             child: Text(
-              "Hello dear,",
+              "You\'re welcome,",
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 15,
@@ -658,9 +796,9 @@ class _HomeState extends State<Home> {
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(left: 20, top: 3),
+            margin: EdgeInsets.only(left: 20, top: 3, bottom: 8),
             child: new Text(
-              "A rider is ready for you.",
+              "Do you have any errands?",
               maxLines: 1,
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -730,10 +868,12 @@ class _HomeState extends State<Home> {
   }
 
   _accountBlockedAlert() {
-    if (widget.arguments != null && widget.arguments.showAccountBlockedSnackBar) {
+    if (widget.arguments != null &&
+        widget.arguments.showAccountBlockedSnackBar) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text('Your account has been blocked. Contact admin for help'),
+          content:
+              Text('Your account has been blocked. Contact admin for help'),
         ));
       });
     }
@@ -776,80 +916,80 @@ class _PickrrAppBarState extends State<PickrrAppBar> {
           onTap: () {
             Scaffold.of(context).openDrawer();
           }),
-      actions: [
-        Row(
-          children: [
-            BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                builder: (_, state) {
-              if (state is NonLoggedIn) {
-                WidgetsBinding.instance.addPostFrameCallback(
-                    (_) => Navigator.pushReplacementNamed(context, '/'));
-              }
-              if (state.props.isEmpty) {
-                return Container();
-              }
-              User user = state.props[0];
-              return RaisedButton.icon(
-                onPressed: () {
-                  if (user.isDriver) {
-                    Navigator.pushNamed(
-                      context,
-                      '/DriversHomePage',
-                    );
-                    return;
-                  }
-                  if (user.isBusiness) {
-                    Navigator.pushNamed(
-                      context,
-                      '/BusinessHomePage',
-                    );
-                    return;
-                  }
-                  Navigator.pushNamed(
-                    context,
-                    '/DriverOnboard',
-                  );
-                },
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                label: Container(
-                  margin: EdgeInsets.only(right: 5, top: 10, bottom: 10),
-                  child: user.isDriver
-                      ? Text('Open as rider',
-                          style: TextStyle(
-                              fontSize: 13.6,
-                              fontFamily: 'Ubuntu',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400))
-                      : user.isBusiness
-                          ? Text('Open as business',
-                              style: TextStyle(
-                                  fontSize: 13.6,
-                                  fontFamily: 'Ubuntu',
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400))
-                          : Text('Become a rider',
-                              style: TextStyle(
-                                  fontSize: 13.6,
-                                  fontFamily: 'Ubuntu',
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400)),
-                ),
-                icon: Container(
-                  margin: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: SvgPicture.asset('assets/svg/kargo_bike.svg',
-                      height: 20, semanticsLabel: 'Bike Icon'),
-                ),
-                textColor: Colors.white,
-                splashColor: Colors.yellowAccent,
-                color: AppColor.primaryText,
-                elevation: 5,
-              );
-            }),
-            SizedBox(width: 15)
-          ],
-        ),
-      ],
+      // actions: [
+      //   Row(
+      //     children: [
+      //       BlocBuilder<AuthenticationBloc, AuthenticationState>(
+      //           builder: (_, state) {
+      //             if (state is NonLoggedIn) {
+      //               WidgetsBinding.instance.addPostFrameCallback(
+      //                       (_) => Navigator.pushReplacementNamed(context, '/'));
+      //             }
+      //             if (state.props.isEmpty) {
+      //               return Container();
+      //             }
+      //             User user = state.props[0];
+      //             return RaisedButton.icon(
+      //               onPressed: () {
+      //                 if (user.isDriver) {
+      //                   Navigator.pushNamed(
+      //                     context,
+      //                     '/DriversHomePage',
+      //                   );
+      //                   return;
+      //                 }
+      //                 if (user.isBusiness) {
+      //                   Navigator.pushNamed(
+      //                     context,
+      //                     '/BusinessHomePage',
+      //                   );
+      //                   return;
+      //                 }
+      //                 Navigator.pushNamed(
+      //                   context,
+      //                   '/DriverOnboard',
+      //                 );
+      //               },
+      //               shape: RoundedRectangleBorder(
+      //                   borderRadius: BorderRadius.all(Radius.circular(8.0))),
+      //               label: Container(
+      //                 margin: EdgeInsets.only(right: 5, top: 10, bottom: 10),
+      //                 child: user.isDriver
+      //                     ? Text('Open as rider',
+      //                     style: TextStyle(
+      //                         fontSize: 13.6,
+      //                         fontFamily: 'Ubuntu',
+      //                         color: Colors.white,
+      //                         fontWeight: FontWeight.w400))
+      //                     : user.isBusiness
+      //                     ? Text('Open as business',
+      //                     style: TextStyle(
+      //                         fontSize: 13.6,
+      //                         fontFamily: 'Ubuntu',
+      //                         color: Colors.white,
+      //                         fontWeight: FontWeight.w400))
+      //                     : Text('Become a rider',
+      //                     style: TextStyle(
+      //                         fontSize: 13.6,
+      //                         fontFamily: 'Ubuntu',
+      //                         color: Colors.white,
+      //                         fontWeight: FontWeight.w400)),
+      //               ),
+      //               icon: Container(
+      //                 margin: EdgeInsets.only(left: 5, top: 10, bottom: 10),
+      //                 child: SvgPicture.asset('assets/svg/kargo_bike.svg',
+      //                     height: 20, semanticsLabel: 'Bike Icon'),
+      //               ),
+      //               textColor: Colors.white,
+      //               splashColor: Colors.yellowAccent,
+      //               color: AppColor.primaryText,
+      //               elevation: 5,
+      //             );
+      //           }),
+      //       SizedBox(width: 15)
+      //     ],
+      //   ),
+      // ],
     );
   }
 }

@@ -55,7 +55,7 @@ class _ReviewOrderState extends State<ReviewOrder> {
             centerTitle: true,
             brightness: Brightness.light,
             title: Text(
-              'Review Order',
+              'Order Review',
               style: TextStyle(
                 fontSize: 17,
                 fontFamily: 'Ubuntu',
@@ -97,19 +97,13 @@ class _ReviewOrderState extends State<ReviewOrder> {
                                         children: [
                                           Row(
                                             children: [
-                                              Icon(
-                                                Icons.location_on_rounded,
-                                                size: 22,
-                                                color: Colors.redAccent,
-                                              ),
-                                              SizedBox(width: 3),
                                               Text(
                                                 'SENDER DETAILS',
                                                 textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                   fontFamily: 'Ubuntu',
-                                                  color: Colors.black87,
+                                                  color: AppColor.primaryText,
                                                   fontWeight: FontWeight.w800,
                                                 ),
                                               ),
@@ -250,22 +244,13 @@ class _ReviewOrderState extends State<ReviewOrder> {
                                         children: [
                                           Row(
                                             children: [
-                                              Transform.rotate(
-                                                angle: 120,
-                                                child: Icon(
-                                                  Icons.navigation_rounded,
-                                                  size: 22,
-                                                  color: Colors.green,
-                                                ),
-                                              ),
-                                              SizedBox(width: 3),
                                               Text(
                                                 'RECEIVER DETAILS',
                                                 textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                   fontFamily: 'Ubuntu',
-                                                  color: Colors.black87,
+                                                  color: AppColor.primaryPepper,
                                                   fontWeight: FontWeight.w800,
                                                 ),
                                               ),
@@ -459,7 +444,7 @@ class _ReviewOrderState extends State<ReviewOrder> {
                                           style: TextStyle(
                                               fontSize: 18.0,
                                               fontFamily: "Roboto",
-                                              color: AppColor.primaryText,
+                                              color: AppColor.primaryPepper,
                                               fontWeight: FontWeight.w800,
                                               height: 1.35),
                                         ),
@@ -490,12 +475,12 @@ class _ReviewOrderState extends State<ReviewOrder> {
                             return FlatButton(
                               splashColor: Colors.white,
                               shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(25.0),
+                                borderRadius: new BorderRadius.circular(8.0),
                               ),
                               onPressed: () {
                                 _choosePaymentMethodSheet(context, user);
                               },
-                              color: AppColor.primaryText,
+                              color: AppColor.primaryPepper,
                               child: Text(
                                   "Pay " +
                                       currencyFormatter.format(widget.arguments.price),
@@ -563,34 +548,7 @@ class _ReviewOrderState extends State<ReviewOrder> {
                     contentPadding:
                         EdgeInsets.only(top: 15, bottom: 15, left: 15),
                   ),
-                 Divider(height: 0.5, color: Colors.grey[400]),
-                 new ListTile(
-                   dense: true,
-                   leading: SvgPicture.asset('assets/svg/card.svg',
-                       height: 30, semanticsLabel: 'card icon'),
-                   title: new Text('Pay Online',
-                       style: TextStyle(
-                           fontSize: 17.0,
-                           fontFamily: "Ubuntu",
-                           color: Colors.black,
-                           fontWeight: FontWeight.w400)),
-                   subtitle: Text(deactivateActionBtn ? 'Preparing online payment...' : 'Pay using your card details',
-                       style: TextStyle(
-                           fontSize: 15.0,
-                           fontFamily: "Ubuntu",
-                           color: Colors.grey,
-                           fontWeight: FontWeight.w400,
-                           height: 1.4)),
-                   onTap: deactivateActionBtn
-                       ? null
-                       : () {
-                     chargeCard(context, widget.arguments.price, user);
-                   },
-                   trailing: Icon(Icons.arrow_forward_ios,
-                       color: Colors.grey[400], size: 18),
-                   contentPadding:
-                       EdgeInsets.only(top: 15, bottom: 15, left: 15),
-                 ),
+
                   SizedBox(height: 10),
                 ],
               ),

@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:pickrr_app/src/helpers/constants.dart';
 import 'package:pickrr_app/src/helpers/utility.dart';
 
 class AwaitingRideWidget extends StatelessWidget {
@@ -20,7 +21,7 @@ class AwaitingRideWidget extends StatelessWidget {
               animation: 'RidertoStore'),
         ),
         new Text(
-          "A driver will be assigned\nto you shortly...",
+          "Your rider will be assigned\nto you shortly...",
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 17.0,
@@ -34,7 +35,7 @@ class AwaitingRideWidget extends StatelessWidget {
           child: Container(
             height: 45,
             alignment: Alignment.center,
-            color: Colors.red,
+            color: AppColor.primaryPepper,
             margin: EdgeInsets.only(bottom: 10, left: 25, right: 25, top: 0),
             child: Text('Cancel ride',
                 style: TextStyle(
@@ -45,7 +46,6 @@ class AwaitingRideWidget extends StatelessWidget {
           ),
           onTap: () async => cancelRide(context, rideId),
         ),
-
         SizedBox(height: 10),
         GestureDetector(
           child: Container(

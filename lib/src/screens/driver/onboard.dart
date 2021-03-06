@@ -6,126 +6,132 @@ import 'package:pickrr_app/src/helpers/constants.dart';
 
 class DriverOnboard extends StatelessWidget {
   final int delayAmount = 500;
-  final bgImage = 'assets/flare/pickrr.flr';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           elevation: 0,
+          backgroundColor: Colors.white,
           brightness: Brightness.light,
           actions: [
-            FlatButton(
-                child: Text('Cancel',
-                    style: TextStyle(
-                      color: AppColor.primaryText,
-                      fontFamily: 'Ubuntu',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    )),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
+            GestureDetector(
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.only(left: 0.0),
+                height: 40,
+                width: 100,
+                child: Text(
+                  'Go back',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Ubuntu',
+                    color: AppColor.primaryText,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
-        body: Stack(
+        body: Column(
           children: <Widget>[
-            new FlareActor(bgImage,
-                alignment: Alignment.center, fit: BoxFit.cover),
-            Positioned(
-              top: 80,
-              left: 0,
-              right: 0,
-              child: Align(
-                child: Container(
-                    height: MediaQuery.of(context).size.height / 2.4,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(left: 30, bottom: 30, right: 30),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ShowUp(
-                            child: Hero(
-                              tag: 'input_phon_auth_title',
-                              flightShuttleBuilder: _flightShuttleBuilder,
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(right: 20, left: 20, top: 30),
+                child: Image.asset(
+                  'assets/images/driver_onboard.png',
+                  width: MediaQuery.of(context).size.width,
+                ),
+              ),
+              flex: 1,
+            ),
+            Expanded(
+              child: Container(
+                  height: MediaQuery.of(context).size.height / 2.4,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(left: 30, bottom: 30, right: 30),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ShowUp(
+                          child: Hero(
+                            tag: 'input_phon_auth_title',
+                            flightShuttleBuilder: _flightShuttleBuilder,
+                            child: Text(
+                              'Become A Driver On\nCourierAsap?',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 27,
+                                  fontFamily: 'Ubuntu',
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ),
+                          delay: delayAmount + 800,
+                        ),
+                        SizedBox(height: 12),
+                        ShowUp(
+                          child: Hero(
+                              tag: 'body_text_splash',
                               child: Text(
-                                'Want to be your own\nboss?',
+                                'CourierAsap helps you earn by managing your rides and providing you ride requests. ',
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 27,
+                                    fontSize: 16,
                                     fontFamily: 'Ubuntu',
-                                    fontWeight: FontWeight.w800),
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.3),
+                              )),
+                          delay: delayAmount + 1500,
+                        ),
+                        SizedBox(height: 30),
+                        ShowUp(
+                          child: GestureDetector(
+                            child: Container(
+                              height: 47,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppColor.primaryPepper,
+                                    AppColor.primaryPepper,
+                                    AppColor.primaryPepper,
+                                    AppColor.primaryPepper,
+                                  ],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                ),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(8.0),
+                                ),
                               ),
-                            ),
-                            delay: delayAmount + 800,
-                          ),
-                          SizedBox(height: 12),
-                          ShowUp(
-                            child: Hero(
-                                tag: 'body_text_splash',
+                              child: Center(
                                 child: Text(
-                                  'The Pickrr Rider Portal helps you earn smarter with realtime information on orders.',
+                                  'Start Now',
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontFamily: 'Ubuntu',
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.3),
-                                )),
-                            delay: delayAmount + 1500,
-                          ),
-                          SizedBox(height: 20),
-                          ShowUp(
-                            child: GestureDetector(
-                              child: Container(
-                                height: 47,
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        AppColor.primaryText,
-                                        AppColor.primaryText,
-                                        Colors.lightBlueAccent
-                                      ],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(35.0),
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: AppColor.primaryText
-                                            .withOpacity(0.25),
-                                        spreadRadius: 2,
-                                        blurRadius: 20,
-                                        offset: Offset(0, 10),
-                                      )
-                                    ]),
-                                child: Center(
-                                  child: Text(
-                                    'Apply Now',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontFamily: "Ubuntu",
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 16,
-                                      letterSpacing: 0.0,
-                                      color: Colors.white,
-                                    ),
+                                    fontFamily: "Ubuntu",
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    letterSpacing: 0.0,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),
-                              onTap: () {
-                                _settingModalBottomSheet(context);
-                              },
                             ),
-                            delay: delayAmount + 2400,
+                            onTap: () {
+                              _settingModalBottomSheet(context);
+                            },
                           ),
-                        ])),
-              ),
+                          delay: delayAmount + 2400,
+                        ),
+                      ])),
+              flex: 2,
             ),
           ],
         ));
@@ -203,7 +209,8 @@ class DriverOnboard extends StatelessWidget {
                         size: 20,
                         color: Colors.grey[400],
                       ),
-                      onTap: () => Navigator.pushNamed(context, '/BusinessApplication')),
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/BusinessApplication')),
                 ),
               ],
             ),

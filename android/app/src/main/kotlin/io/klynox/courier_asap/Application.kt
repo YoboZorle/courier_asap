@@ -1,4 +1,4 @@
-package io.klynox.pickrr_app
+package io.klynox.courier_asap
 
 import io.flutter.app.FlutterApplication
 import io.flutter.plugin.common.PluginRegistry

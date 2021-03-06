@@ -75,6 +75,17 @@ class NavDrawer extends StatelessWidget {
                 color: Colors.grey[300]),
             ListTile(
               title: Text(
+                'Shop For Me',
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "Ubuntu",
+                    fontSize: 18),
+              ),
+              leading: Icon(Icons.shopping_bag_outlined),
+              onTap: () => launch("tel://+2348161654006"),
+            ),
+            ListTile(
+              title: Text(
                 'Order History',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
@@ -107,7 +118,7 @@ class NavDrawer extends StatelessWidget {
                     fontSize: 18),
               ),
               leading: Icon(Icons.help_outline),
-              onTap: () => launch("tel://+2348076048409"),
+              onTap: () => launch("tel://+2348161654006"),
             ),
             ListTile(
                 title: Text(
@@ -122,57 +133,48 @@ class NavDrawer extends StatelessWidget {
                   Navigator.pushNamed(context, '/Terms');
                 }),
             Expanded(child: SizedBox()),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColor.primaryText,
-              ),
-              margin: EdgeInsets.only(bottom: 40),
-              child: ListTile(
-                title: Text(
-                  !user.isDriver && !user.isBusiness
-                      ? 'Become a rider'
-                      : user.isDriver
-                          ? 'Open as rider'
-                          : 'Open as business',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "Ubuntu",
-                      color: Colors.white,
-                      fontSize: 16),
-                ),
-                subtitle: Text(
-                  'Earn money on your schedule',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "Ubuntu",
-                      color: Colors.grey[200],
-                      fontSize: 13),
-                ),
-                trailing: Icon(Icons.arrow_forward_ios,
-                    size: 17, color: Colors.grey[200]),
-                onTap: () {
-                  if (user.isDriver) {
+            ListTile(
+              title: RaisedButton(
+                  onPressed: () {
+                    if (user.isDriver) {
+                      Navigator.pushNamed(
+                        context,
+                        '/DriversHomePage',
+                      );
+                      return;
+                    }
+                    if (user.isBusiness) {
+                      Navigator.pushNamed(
+                        context,
+                        '/BusinessHomePage',
+                      );
+                      return;
+                    }
                     Navigator.pushNamed(
                       context,
-                      '/DriversHomePage',
+                      '/DriverOnboard',
                     );
-                    return;
-                  }
-                  if (user.isBusiness) {
-                    Navigator.pushNamed(
-                      context,
-                      '/BusinessHomePage',
-                    );
-                    return;
-                  }
-                  Navigator.pushNamed(
-                    context,
-                    '/DriverOnboard',
-                  );
-                },
-              ),
-            )
+                  },
+                  elevation: 8,
+                  color: AppColor.primaryPepper,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 15, bottom: 15, right: 30, left: 30),
+                    child: Text(
+                      !user.isDriver && !user.isBusiness
+                          ? 'Become a rider'
+                          : user.isDriver
+                              ? 'Open as rider'
+                              : 'Open as business',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Ubuntu",
+                          color: Colors.white,
+                          fontSize: 16),
+                    ),
+                  )),
+            ),
+            SizedBox(height: 40)
           ]),
         ),
       );
@@ -269,7 +271,7 @@ class RiderNavDrawer extends StatelessWidget {
                       fontSize: 18),
                 ),
                 leading: Icon(Icons.support_agent),
-                onTap: () => launch("tel://+2348076048409"),
+                onTap: () => launch("tel://+2348161654006"),
               ),
               Expanded(child: SizedBox()),
               Container(
@@ -344,8 +346,7 @@ class BusinessNavDrawer extends StatelessWidget {
                   children: <Widget>[
                     InkWell(
                       splashColor: Colors.grey[300],
-                      onTap: () {
-                      },
+                      onTap: () {},
                       child: UserAccountsDrawerHeader(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -370,10 +371,10 @@ class BusinessNavDrawer extends StatelessWidget {
                                 decoration: BoxDecoration(color: Colors.white),
                                 child: businessDetails.logo != null
                                     ? CustomImage(
-                                        imageUrl:
-                                            '${businessDetails.logo}',
+                                        imageUrl: '${businessDetails.logo}',
                                       )
-                                    : Image.asset('assets/images/placeholder.jpg',
+                                    : Image.asset(
+                                        'assets/images/placeholder.jpg',
                                         width: double.infinity,
                                         height: double.infinity))),
                       ),

@@ -151,7 +151,7 @@ class _PackageReceiverDetailsState extends State<PackageReceiverDetails> {
                                     bottom: 5, left: 20, right: 20),
                                 decoration: BoxDecoration(
                                   color: _enableBtn
-                                      ? AppColor.primaryText
+                                      ? AppColor.primaryPepper
                                       : Colors.grey.withOpacity(0.5),
                                   boxShadow: _enableBtn
                                       ? [Shadows.secondaryShadow]

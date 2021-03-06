@@ -8,7 +8,7 @@ class Borders {
   );
 
   static final BorderSide globalSearchBorder = BorderSide(
-    color: Color.fromARGB(70, 0, 141, 210),
+    color: AppColor.primaryText.withOpacity(0.3),
     width: 0.4,
     style: BorderStyle.solid,
   );
@@ -18,7 +18,8 @@ class AppColor {
   static final Color primaryBackground = Color.fromARGB(255, 255, 255, 255);
   static final Color secondaryBackground = Color.fromARGB(255, 0, 141, 210);
   static final Color primaryElement = Color.fromARGB(255, 255, 255, 255);
-  static final Color primaryText = Color.fromARGB(255, 0, 141, 210);
+  static final Color primaryText = Color(0xFF754E26);
+  static final Color primaryPepper =     Color(0xFFC44942);
   static final grey = Color(0xFF959595);
 }
 
@@ -29,22 +30,22 @@ class Radii {
       topRight: Radius.circular(40), topLeft: Radius.circular(40));
 
   static final BorderRadiusGeometry k25pxRadius = BorderRadius.only(
-      topRight: Radius.circular(25),
-      topLeft: Radius.circular(25),
-      bottomLeft: Radius.circular(25),
-      bottomRight: Radius.circular(25));
+      topRight: Radius.circular(8),
+      topLeft: Radius.circular(8),
+      bottomLeft: Radius.circular(8),
+      bottomRight: Radius.circular(8));
 
   static final BorderRadiusGeometry k25pxAll = BorderRadius.only(
-      topRight: Radius.circular(25),
-      topLeft: Radius.circular(25),
-      bottomLeft: Radius.circular(25),
-      bottomRight: Radius.circular(25));
+      topRight: Radius.circular(8),
+      topLeft: Radius.circular(8),
+      bottomLeft: Radius.circular(8),
+      bottomRight: Radius.circular(8));
 
   static final BorderRadiusGeometry kRoundpxRadius = BorderRadius.only(
-      topRight: Radius.circular(25),
-      topLeft: Radius.circular(25),
-      bottomLeft: Radius.circular(25),
-      bottomRight: Radius.circular(25));
+      topRight: Radius.circular(8),
+      topLeft: Radius.circular(8),
+      bottomLeft: Radius.circular(8),
+      bottomRight: Radius.circular(8));
 
   static final BorderRadiusGeometry kRoundpxRadius8 = BorderRadius.only(
       topRight: Radius.circular(0),
@@ -87,11 +88,11 @@ class Shadows {
 
 class APIConstants {
   static final String httpUrl =
-      'http://pickrr-web-service.eba-baibmgej.us-east-1.elasticbeanstalk.com';
+      'http://courier-web-service.eba-yx89rkrm.us-east-1.elasticbeanstalk.com';
   static final String wsUrl =
-      'ws://pickrr-web-service.eba-baibmgej.us-east-1.elasticbeanstalk.com';
+      'ws://courier-web-service.eba-yx89rkrm.us-east-1.elasticbeanstalk.com';
   static final String assetsUrl =
-      'https://pickrr-storage.s3.amazonaws.com/logistics-a9e77482c84e16/';
+      'https://courier-asap-storage.s3.amazonaws.com/logistics-asap7793ss0/';
   static final String apiUrl = '$httpUrl/api/';
 }
 
